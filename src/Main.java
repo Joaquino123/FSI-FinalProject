@@ -1,8 +1,17 @@
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author joaqu
@@ -14,6 +23,23 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        setLocationRelativeTo(this);
+        styleButton(bPeliculas, 40,
+                new Color(0, 153, 255), // color inicial
+                new Color(0, 102, 255), // color final
+                Color.WHITE // color del texto
+        );
+        styleButton(bActores, 40,
+                new Color(0, 153, 255), // color inicial
+                new Color(0, 102, 255), // color final
+                Color.WHITE // color del texto
+        );
+        styleButton(bFilamciones, 40,
+                new Color(0, 153, 255), // color inicial
+                new Color(0, 102, 255), // color final
+                Color.WHITE // color del texto
+        );
+
     }
 
     /**
@@ -26,29 +52,34 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bPeliculas = new javax.swing.JButton();
+        bActores = new javax.swing.JButton();
+        bFilamciones = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
-        jButton1.setText("Peliculas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bPeliculas.setText("Peliculas");
+        bPeliculas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bPeliculasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Actores");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        bActores.setText("Actores");
+        bActores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                bActoresActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Filmaciones");
+        bFilamciones.setText("Filmaciones");
+        bFilamciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFilamcionesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -57,20 +88,20 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(137, 137, 137)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bFilamciones, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bActores, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bPeliculas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bActores, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bFilamciones, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -88,14 +119,77 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FPeliculas fp=new FPeliculas();
+    private void bPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPeliculasActionPerformed
+        FPeliculas fp = new FPeliculas();
         fp.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bPeliculasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void bActoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActoresActionPerformed
+        FActores fa=new FActores();
+        fa.setVisible(true);
+    }//GEN-LAST:event_bActoresActionPerformed
+
+    private void bFilamcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFilamcionesActionPerformed
+    FFilmacion ff=new FFilmacion();
+    ff.setVisible(true);
+    }//GEN-LAST:event_bFilamcionesActionPerformed
+    public static void styleButton(JButton btn, int radius, Color color1, Color color2, Color textColor) {
+
+        btn.setFocusPainted(false);
+        btn.setBorderPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setOpaque(false);
+        btn.setForeground(textColor);
+        btn.setFont(new Font("Segoe UI", Font.BOLD, 14));
+
+        // Colores originales (para restaurar)
+        final Color base1 = color1;
+        final Color base2 = color2;
+
+        // Colores aclarados para hover
+        final Color hover1 = color1.brighter();
+        final Color hover2 = color2.brighter();
+
+        // Estado hover
+        final boolean[] isHover = {false};
+
+        // Listener para hover
+        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                isHover[0] = true;
+                btn.repaint();
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                isHover[0] = false;
+                btn.repaint();
+            }
+        });
+
+        // Pintado personalizado
+        btn.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+            @Override
+            public void paint(Graphics g, JComponent c) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                int width = c.getWidth();
+                int height = c.getHeight();
+
+                // Si está en hover, usa colores más claros
+                Color start = isHover[0] ? hover1 : base1;
+                Color end = isHover[0] ? hover2 : base2;
+
+                GradientPaint gp = new GradientPaint(0, 0, start, width, height, end);
+                g2.setPaint(gp);
+                g2.fillRoundRect(0, 0, width, height, radius, radius);
+
+                super.paint(g2, c);
+            }
+        });
+    }
 
     /**
      * @param args the command line arguments
@@ -133,9 +227,9 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton bActores;
+    private javax.swing.JButton bFilamciones;
+    private javax.swing.JButton bPeliculas;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,7 +25,7 @@ public class GraficaBarras {
             for (ArrayList<String> fila : datos) {
                 String genero = fila.get(0);     // eje X
                 int cantidad = Integer.parseInt(fila.get(1)); // eje Y
-                dataset.addValue(cantidad, "Actores", genero);
+                dataset.addValue(cantidad, "peliculas", genero);
             }
 
             JFreeChart chart = ChartFactory.createBarChart(

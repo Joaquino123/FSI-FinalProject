@@ -15,6 +15,9 @@ import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,6 +38,7 @@ import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -589,11 +593,61 @@ public class ConexionHR {
             System.out.println("Resultado: " + resultado);
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            
+        }
+        return correcta;
+    }
+    
+    public int actualizarClaveCompuesta(String tabla, String[] valores) {
+        int correcta = 0;
+        String[] cols = columnas(tabla);
+
+        // <<< NÚMERO DE COLUMNAS QUE SON PARTE DE LA PK >>>
+        int numPK = 2;   // ⚠ CAMBIA ESTO si tu tabla tiene 3 PKs
+
+        StringBuilder sql = new StringBuilder("UPDATE ").append(tabla).append(" SET ");
+
+        // Construimos el SET (los valores que se actualizan)
+        for (int k = numPK; k < valores.length; k++) {
+            sql.append(cols[k]).append(" = '")
+                    .append(valores[k].replace("'", "''")).append("'");
+            if (k < valores.length - 1) {
+                sql.append(", ");
+            }
+        }
+
+        // WHERE para clave compuesta
+        sql.append(" WHERE ");
+        for (int i = 0; i < numPK; i++) {
+            sql.append(cols[i]).append(" = '")
+                    .append(valores[i].replace("'", "''")).append("'");
+            if (i < numPK - 1) {
+                sql.append(" AND ");
+            }
+        }
+
+        System.out.println("ACTUALIZAR: " + sql.toString());
+
+        try {
+            String resultado = peticionHttpPost(url, sql.toString());
+
+            if (resultado != null && resultado.contains("AFFECTED ROWS")) {
+                correcta = 1;
+            } else {
+                System.out.println("Resultado: " + resultado);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return correcta;
     }
     
+
+    //-------------------------------------------------------
+    //---Borra el registro en una tabla
+    //-------------------------------------------------------
     public int borrar2(String tabla, String columna, String valores) {
         int correcta = 0;
 
@@ -657,6 +711,57 @@ public class ConexionHR {
         return correcta;
     }
 
+    public int borrarClaveCompuesta(String tabla, String[] valores) {
+        int correcta = 0;
+
+        String[] cols = columnas(tabla);
+
+        // <<< NUMERO DE COLUMNAS QUE SON PARTE DE LA PK >>>
+        int numPK = 2;
+
+        // Armamos DELETE
+        StringBuilder sql = new StringBuilder("DELETE FROM ").append(tabla).append(" WHERE ");
+
+        for (int i = 0; i < numPK; i++) {
+            String valor = (valores[i] == null) ? "" : valores[i].replace("'", "''");
+            sql.append(cols[i]).append(" = '").append(valor).append("'");
+
+            if (i < numPK - 1) {
+                sql.append(" AND ");
+            }
+        }
+
+        System.out.println("SQL a enviar: " + sql.toString());
+
+        try {
+            String resultado = peticionHttpPost2(url, sql.toString());
+
+            if (resultado != null) {
+                System.out.println("Respuesta del servidor: " + resultado);
+
+                // Detectar AFFECTED ROWS
+                Matcher m = Pattern.compile("AFFECTED ROWS\\s*[:]?\\s*(\\d+)", Pattern.CASE_INSENSITIVE)
+                        .matcher(resultado);
+                if (m.find()) {
+                    int filas = Integer.parseInt(m.group(1));
+                    if (filas > 0) {
+                        correcta = 1;
+                    }
+                }
+
+                if (resultado.toUpperCase().contains("ERROR")) {
+                    System.out.println("Error SQL: " + resultado);
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error en borrar3: " + e.getMessage());
+        }
+
+        return correcta;
+    }
+
     private String peticionHttpPost2(String urlStr, String query) {
         try {
             String key = "secret";
@@ -706,6 +811,62 @@ public class ConexionHR {
             System.out.println("Error en peticionHttpPost(): " + e.getMessage());
             return null;
         }
+    }
+
+    public static void styleTable(JTable table,
+            Color headerBg,
+            Color headerFg,
+            Color rowBg,
+            Color rowAltBg,
+            Color rowFg,
+            Color selectionBg,
+            int rowHeight,
+            Font headerFont,
+            Font rowFont) {
+
+        // --- Encabezado ---
+        JTableHeader header = table.getTableHeader();
+        header.setBackground(headerBg);
+        header.setForeground(headerFg);
+        header.setFont(headerFont);
+        header.setOpaque(true);
+
+        // Quita bordes feos del header
+        header.setBorder(BorderFactory.createEmptyBorder());
+
+        // --- Filas ---
+        table.setRowHeight(rowHeight);
+        table.setFont(rowFont);
+        table.setForeground(rowFg);
+
+        // Renderer personalizado para colores de filas
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable tbl, Object val,
+                    boolean isSelected, boolean hasFocus,
+                    int row, int col) {
+
+                Component c = super.getTableCellRendererComponent(tbl, val, isSelected, hasFocus, row, col);
+
+                if (isSelected) {
+                    c.setBackground(selectionBg);
+                    c.setForeground(Color.WHITE);
+                } else {
+                    c.setBackground(row % 2 == 0 ? rowBg : rowAltBg);
+                    c.setForeground(rowFg);
+                }
+
+                setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+                return c;
+            }
+        });
+
+        // Quitar líneas de celda (opcional)
+        table.setShowHorizontalLines(false);
+        table.setShowVerticalLines(false);
+
+        // Bordes suaves
+        table.setIntercellSpacing(new Dimension(0, 0));
     }
     
 }

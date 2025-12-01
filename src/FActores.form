@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,93 +43,10 @@
         </Property>
       </Properties>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="1" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="1" min="-2" pref="104" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="1" min="-2" pref="104" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="tID" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="tNombre" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="tNacionalidad" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="tFechaNac" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                      <Component id="cbGenero" alignment="0" min="-2" pref="194" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pmul" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jScrollPane1" min="-2" pref="608" max="-2" attributes="0"/>
-                              <Component id="prosita" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="86" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="prosita" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel3" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="tID" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="tNombre" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel4" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="cbGenero" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="tNacionalidad" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel6" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                              <Component id="tFechaNac" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="pmul" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="212" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="componentes.textBoxPersonalizado" name="tID">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -138,6 +55,11 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Actores"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="204" y="18" width="-1" height="86"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Container class="javax.swing.JPanel" name="prosita">
           <Properties>
@@ -145,6 +67,11 @@
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
             </Property>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="110" width="980" height="-1"/>
+            </Constraint>
+          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -156,13 +83,15 @@
                       <Component id="bActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bBorrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="bNuevo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="bGrafica" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bPDF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bInterpretacion" min="-2" pref="117" max="-2" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -170,15 +99,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="bPDF" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="bNuevo" max="32767" attributes="0"/>
-                              <Component id="bActualizar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bBorrar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bAgregar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bGrafica" alignment="1" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="bInterpretacion" max="32767" attributes="0"/>
+                          <Component id="bPDF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bNuevo" max="32767" attributes="0"/>
+                          <Component id="bActualizar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bBorrar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bAgregar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bGrafica" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -189,6 +117,7 @@
             <Container class="componentes.botonPersonalizado" name="bAgregar">
               <Properties>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="Add"/>
               </Properties>
               <Events>
@@ -217,6 +146,7 @@
                   <Color blue="ff" green="66" red="0" type="rgb"/>
                 </Property>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="Update"/>
               </Properties>
               <Events>
@@ -242,6 +172,7 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="Delete"/>
               </Properties>
               <Events>
@@ -270,6 +201,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="New"/>
               </Properties>
               <Events>
@@ -298,6 +230,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="PDF"/>
               </Properties>
               <Events>
@@ -307,7 +240,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -326,6 +259,7 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="xSombra" type="boolean" value="false"/>
+                <Property name="xTama&#xf1;oSombra" type="int" value="0"/>
                 <Property name="xTexto" type="java.lang.String" value="Grafic"/>
               </Properties>
               <Events>
@@ -345,12 +279,25 @@
                 </DimensionLayout>
               </Layout>
             </Container>
+            <Component class="javax.swing.JButton" name="bInterpretacion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Interpretaciones"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bInterpretacionActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="471" width="608" height="220"/>
+            </Constraint>
+          </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
@@ -376,36 +323,76 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="267" width="104" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="ID:"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="214" width="104" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Genero:"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="322" width="104" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="372" width="104" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Fehca nacimiento:"/>
           </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="6" y="428" width="104" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="componentes.textBoxPersonalizado" name="tNombre">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="266" width="194" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="componentes.textBoxPersonalizado" name="tNacionalidad">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="371" width="194" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="componentes.textBoxPersonalizado" name="tFechaNac">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="427" width="194" height="43"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbGenero">
           <Properties>
@@ -419,8 +406,18 @@
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="332" width="194" height="-1"/>
+            </Constraint>
+          </Constraints>
         </Component>
         <Container class="javax.swing.JPanel" name="pmul">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="322" y="214" width="660" height="-1"/>
+            </Constraint>
+          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -430,11 +427,156 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="255" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="251" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="730" y="471" width="240" height="-1"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel7" max="32767" attributes="0"/>
+                          <Component id="bTodo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="bBuscarFiltro" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="cbDecada" alignment="0" pref="100" max="32767" attributes="0"/>
+                                  <Component id="cbSexo" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel8" max="32767" attributes="0"/>
+                                  <Component id="jLabel9" pref="93" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="bAgrupar" pref="199" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbSexo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbDecada" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="bBuscarFiltro" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bTodo" min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="bAgrupar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JComboBox" name="cbSexo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbDecada">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="Todos"/>
+                    <StringItem index="1" value="1980"/>
+                    <StringItem index="2" value="1990"/>
+                    <StringItem index="3" value="2000"/>
+                    <StringItem index="4" value="2010"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="18" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Filtros"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="bBuscarFiltro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Filter"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBuscarFiltroActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Genero"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Decada"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="bTodo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Everything"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bTodoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="bAgrupar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Agrupar por g&#xe9;nero"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAgruparActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JTextField" name="tID">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="116" y="224" width="194" height="36"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

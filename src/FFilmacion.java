@@ -1,56 +1,72 @@
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import javax.swing.AbstractButton;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-/**
- *
- * @author joaqu
- */
 public class FFilmacion extends javax.swing.JFrame {
+
     String url = "http://joaquinoworld.shop/mysql.php";
     // Usa esta dirección IP que ya comprobamos que llega al servidor
     ConexionHR cnx = new ConexionHR(url);
-    
-    /**
-     * Creates new form FFilmacion
-     */
-    public FFilmacion() {
+
+    public FFilmacion(String id) {
         initComponents();
+        tInterpretacion.getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                int col = tInterpretacion.columnAtPoint(evt.getPoint());
+                String nombreColumna = tInterpretacion.getColumnName(col);
+
+                String sql = "SELECT * FROM filmacion ORDER BY " + nombreColumna;
+                cnx.entablar(sql, tInterpretacion);
+            }
+        });
+        setLocationRelativeTo(this);
+        establecerSlider();
         cnx.entablar("select * from filmacion", tInterpretacion);
-        estilizarPanel(pFondo);
-        styleTable(tInterpretacion,
-                new Color(90, 120, 255), // headerBg
-                Color.black, // headerFg
-                new Color(250, 250, 255), // rowBg
-                new Color(235, 240, 255), // rowAltBg
-                new Color(50, 50, 70), // rowFg
-                new Color(120, 140, 255), // selectionBg
+
+        cnx.seleccionar("select concat(idpelicula,'-',titulo) from peliculas", cbPelicula);
+        cnx.seleccionar("select concat(idactor,'-',nombrea) from actores", cbActor);
+        cnx.seleccionar("select generop from filmGenero group by generop", cbGenero);
+        cbGenero.insertItemAt("Todos", 0);
+        cbGenero.setSelectedItem("Todos");
+
+        if (id != null && !id.trim().isEmpty()) {
+            for (int i = 0; i < cbActor.getItemCount(); i++) {
+                String item = cbActor.getItemAt(i);
+                if (item.startsWith(id)) {   // ← Compara solo el inicio
+                    cbActor.setSelectedIndex(i);
+                    break;
+
+                }
+            }
+        }
+        cnx.styleTable(tInterpretacion,
+                new Color(150, 150, 150), // headerBg (gris mediano)
+                Color.white, // headerFg (blanco)
+                new Color(255, 240, 245), // rowBg (rosa claro)
+                new Color(255, 228, 235), // rowAltBg (rosa un poco más fuerte)
+                Color.black, // rowFg (texto negro)
+                new Color(255, 180, 200), // selectionBg (rosa más intenso para selección)
                 30, // rowHeight
                 new Font("Segoe UI", Font.BOLD, 13), // headerFont
                 new Font("Segoe UI", Font.PLAIN, 12) // rowFont
         );
-        cnx.seleccionar("select concat(idactor,'-',nombrea) from actores", cbActor);
-        cnx.seleccionar("select titulo from peliculas", cbPelicula);
+        
     }
+
     public static void styleTable(JTable table,
             Color headerBg,
             Color headerFg,
@@ -106,6 +122,7 @@ public class FFilmacion extends javax.swing.JFrame {
         // Bordes suaves
         table.setIntercellSpacing(new Dimension(0, 0));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,19 +132,44 @@ public class FFilmacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         pFondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tInterpretacion = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        bPDF = new javax.swing.JButton();
+        bModificar = new javax.swing.JButton();
+        pSeleccion = new javax.swing.JPanel();
         cbActor = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         cbPelicula = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        bAsignar = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        cbGenero = new javax.swing.JComboBox<>();
+        bFiltrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        lPago = new javax.swing.JLabel();
+        slPago = new javax.swing.JSlider();
+        jPanel3 = new javax.swing.JPanel();
+        bAgruparActor = new javax.swing.JButton();
+        txtPersonaje = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         txtPago = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        bEliminar = new javax.swing.JButton();
+        pGrafica = new javax.swing.JPanel();
+        bTodo = new javax.swing.JButton();
+        bGraficar = new javax.swing.JButton();
+        bAsignar = new javax.swing.JButton();
+        tBuscar = new javax.swing.JTextField();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        pFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tInterpretacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,103 +182,340 @@ public class FFilmacion extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tInterpretacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tInterpretacionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tInterpretacion);
 
+        pFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 526, 410));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Filmación");
+        pFondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 230, -1));
+
+        bPDF.setText("PDF");
+        bPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPDFActionPerformed(evt);
+            }
+        });
+        pFondo.add(bPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 119, 40));
+
+        bModificar.setText("Modificar");
+        bModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarActionPerformed(evt);
+            }
+        });
+        pFondo.add(bModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 119, 40));
+
+        pSeleccion.setBackground(new java.awt.Color(204, 204, 255));
+        pSeleccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         cbActor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pSeleccion.add(cbActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 30));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Actor");
+        pSeleccion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 60, 29));
 
         cbPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pSeleccion.add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 252, 30));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Film");
+        pSeleccion.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 40, 29));
 
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Selección");
+        pSeleccion.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 6, 137, -1));
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Filtrar por:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 14, 137, -1));
+
+        cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 48, 218, -1));
+
+        bFiltrar.setText("Filtrar");
+        bFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFiltrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(bFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 108, 146, 32));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Genero");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 80, -1));
+
+        lPago.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lPago.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lPago.setText("Pago:");
+        jPanel2.add(lPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 74, 120, 30));
+
+        slPago.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                slPagoStateChanged(evt);
+            }
+        });
+        jPanel2.add(slPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 218, -1));
+
+        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+
+        bAgruparActor.setText("Agrupar por actor");
+        bAgruparActor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAgruparActorActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(bAgruparActor, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bAgruparActor, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 148, 330, -1));
+
+        pSeleccion.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 340, 210));
+        pSeleccion.add(txtPersonaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, -1));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Personaje");
+        pSeleccion.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 90, -1));
+        pSeleccion.add(txtPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 220, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Pago");
+        pSeleccion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 80, 20));
 
-        bAsignar.setText("to Hire");
+        pFondo.add(pSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 360, 410));
+
+        bEliminar.setText("Eliminar");
+        bEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarActionPerformed(evt);
+            }
+        });
+        pFondo.add(bEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 119, 40));
+
+        pGrafica.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout pGraficaLayout = new javax.swing.GroupLayout(pGrafica);
+        pGrafica.setLayout(pGraficaLayout);
+        pGraficaLayout.setHorizontalGroup(
+            pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 890, Short.MAX_VALUE)
+        );
+        pGraficaLayout.setVerticalGroup(
+            pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 210, Short.MAX_VALUE)
+        );
+
+        pFondo.add(pGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 890, 210));
+
+        bTodo.setText("Todo");
+        bTodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTodoActionPerformed(evt);
+            }
+        });
+        pFondo.add(bTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 119, 40));
+
+        bGraficar.setText("Graficar");
+        bGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGraficarActionPerformed(evt);
+            }
+        });
+        pFondo.add(bGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 119, 40));
+
+        bAsignar.setText("Contratar");
         bAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAsignarActionPerformed(evt);
             }
         });
+        pFondo.add(bAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, 40));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Actor");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Filmación");
-
-        javax.swing.GroupLayout pFondoLayout = new javax.swing.GroupLayout(pFondo);
-        pFondo.setLayout(pFondoLayout);
-        pFondoLayout.setHorizontalGroup(
-            pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pFondoLayout.createSequentialGroup()
-                        .addComponent(txtPago, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pFondoLayout.createSequentialGroup()
-                        .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pFondoLayout.createSequentialGroup()
-                                .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbActor, 0, 169, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbPelicula, 0, 155, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bAsignar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(68, 68, 68))))
-            .addGroup(pFondoLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        pFondoLayout.setVerticalGroup(
-            pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pFondoLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbPelicula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bAsignar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(cbActor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(txtPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        tBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tBuscarKeyReleased(evt);
+            }
+        });
+        pFondo.add(tBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarActionPerformed
+        String idPel = cbActor.getSelectedItem().toString();
+        String idMovie = cbPelicula.getSelectedItem().toString();
+        String id = idPel.split("-", 2)[0];
+        String movie = idMovie.split("-", 2)[0];
+        String nombre = txtPersonaje.getText();
+        String pago = txtPago.getText();
+        String valores[] = new String[]{id, movie, nombre, pago};
+        cnx.actualizarClaveCompuesta("filmacion", valores);
+        cnx.entablar("select * from filmacion", tInterpretacion);
+    }//GEN-LAST:event_bModificarActionPerformed
+
+    private void bEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarActionPerformed
+        String idPel = cbActor.getSelectedItem().toString();
+        String idMovie = cbPelicula.getSelectedItem().toString();
+        String id = idPel.split("-", 2)[0];
+        String movie = idMovie.split("-", 2)[0];
+
+        String valores[] = new String[]{id, movie};
+        cnx.borrarClaveCompuesta("filmacion", valores);
+        cnx.entablar("select * from filmacion", tInterpretacion);
+    }//GEN-LAST:event_bEliminarActionPerformed
+
+    private void bTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTodoActionPerformed
+        cnx.entablar("select * from filmacion", tInterpretacion);
+    }//GEN-LAST:event_bTodoActionPerformed
+
+    private void bGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGraficarActionPerformed
+        String consulta
+                = "select idactor, pago_total from pagoActores";
+
+        GraficaBarras g = new GraficaBarras(cnx);
+        // conexionHR es tu instancia de ConexionHR
+
+        g.crearGrafica(
+                consulta,
+                "Pago a los actores",
+                "Clave",
+                "Cantidad en dólares",
+                pGrafica,
+                "pagoActores"// tu JPanel existente
+        );
+    }//GEN-LAST:event_bGraficarActionPerformed
+
+    private void tInterpretacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tInterpretacionMouseClicked
+        DefaultTableModel datos = (DefaultTableModel) tInterpretacion.getModel();
+        int renSel = tInterpretacion.getSelectedRow();
+        if (renSel > -1) {
+            String idAct = datos.getValueAt(renSel, 0).toString();
+            String idPel = datos.getValueAt(renSel, 1).toString();
+            String personaje = datos.getValueAt(renSel, 2).toString();
+            String pago = datos.getValueAt(renSel, 3).toString();
+
+            for (int i = 0; i < cbActor.getItemCount(); i++) {
+                String item = cbActor.getItemAt(i);
+                if (item.startsWith(idAct)) {   // ← Compara solo el inicio
+                    cbActor.setSelectedIndex(i);
+                    break;
+
+                }
+            }
+            for (int i = 0; i < cbPelicula.getItemCount(); i++) {
+                String item = cbPelicula.getItemAt(i);
+                if (item.startsWith(idPel)) {   // ← Compara solo el inicio
+                    cbPelicula.setSelectedIndex(i);
+                    break;
+
+                }
+            }
+            cbPelicula.setSelectedItem(idPel);
+            txtPersonaje.setText(personaje);
+            txtPago.setText(pago);
+        }
+    }//GEN-LAST:event_tInterpretacionMouseClicked
+
     private void bAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAsignarActionPerformed
-        String id=cnx.consultar("select nombre").toString();
-        
+        String idAux = cbActor.getSelectedItem().toString();
+        char[] cadena = idAux.toCharArray();
+        String movieAux = cbPelicula.getSelectedItem().toString();
+        String pago = txtPago.getText();
+        String personaje = txtPersonaje.getText();
+
+        String id = idAux.split("-", 2)[0];
+        String movie = movieAux.split("-", 2)[0];
+
+        String[] valores = new String[]{id, movie, personaje, pago};
+        cnx.insertar("filmacion", valores);
+        cnx.entablar("select * from filmacion", tInterpretacion);
+
     }//GEN-LAST:event_bAsignarActionPerformed
+
+    private void bPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPDFActionPerformed
+        String idAux = cbActor.getSelectedItem().toString();
+        String id = idAux.split("-", 2)[0];
+
+        String query = "select * from proyectosActPel where idActor = '" + id + "' ";
+        String qNombre = "select Actor from proyectosActPel where idactor = '" + id + "' limit 1";
+        String name = cnx.consultar(qNombre).toString();
+        name = name.replace("[", "").replace("]", "");
+        cnx.crearPDF("Funciones de " + name, "",
+                query, new float[]{1f, 1f, 1f, 1f,1f,1f}, "promedio_mensual");
+        cnx.visualizarPDF("promedio_mensual");
+    }//GEN-LAST:event_bPDFActionPerformed
+
+    private void bFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFiltrarActionPerformed
+        String generoPel = cbGenero.getSelectedItem().toString();
+        String pago = String.valueOf(slPago.getValue());
+        String sql = "select * from proyectosActPel where pago>=" + pago;
+        if (!generoPel.equals("Todos")) {
+            sql += " and genero = '" + generoPel + "'";
+        }
+
+        cnx.entablar(sql, tInterpretacion);
+        sql = "select * from proyectosActPel where pago>=" + pago;
+    }//GEN-LAST:event_bFiltrarActionPerformed
+
+    private void bAgruparActorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgruparActorActionPerformed
+        String sql = "select * from pagoActores";
+        cnx.entablar(sql, tInterpretacion);
+    }//GEN-LAST:event_bAgruparActorActionPerformed
+
+    private void slPagoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slPagoStateChanged
+        lPago.setText("Pago: " + String.valueOf(slPago.getValue()));
+    }//GEN-LAST:event_slPagoStateChanged
+
+    private void tBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tBuscarKeyReleased
+        String contenido=tBuscar.getText();
+        String sql="select * from proyectosActPel where idActor = '"+contenido+"' ";
+        cnx.entablar(sql, tInterpretacion);
+    }//GEN-LAST:event_tBuscarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -268,116 +547,56 @@ public class FFilmacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FFilmacion().setVisible(true);
+                new FFilmacion(null).setVisible(true);
             }
         });
     }
-    public static void estilizarPanel(JPanel parent) {
 
-    Color rojoBase = new Color(220, 53, 69);     // estilo bootstrap danger
-    Color rojoClaro = new Color(245, 108, 118);
-    Color rojoOscuro = new Color(173, 30, 45);
-    Color texto = Color.WHITE;
-
-    for (Component c : parent.getComponents()) {
-
-        // ----- BOTONES -----
-        if (c instanceof JButton btn) {
-            btn.setBackground(rojoBase);
-            btn.setForeground(texto);
-            btn.setFocusPainted(false);
-            btn.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
-            btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-            btn.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
-                @Override
-                protected void paintButtonPressed(Graphics g, AbstractButton b) {
-                    g.setColor(rojoOscuro);
-                    g.fillRoundRect(0, 0, b.getWidth(), b.getHeight(), 18, 18);
-                }
-            });
-
-            btn.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    btn.setBackground(rojoClaro);
-                }
-                @Override
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    btn.setBackground(rojoBase);
-                }
-            });
-        }
-
-        // ----- JTABLE -----
-        if (c instanceof JTable tabla) {
-            tabla.setRowHeight(30);
-            tabla.setShowGrid(false);
-            tabla.setIntercellSpacing(new Dimension(0, 0));
-            tabla.setSelectionBackground(rojoClaro);
-            tabla.setSelectionForeground(Color.WHITE);
-            tabla.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-
-            JTableHeader th = tabla.getTableHeader();
-            th.setBackground(rojoBase);
-            th.setForeground(texto);
-            th.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        }
-
-        // ----- JCOMBOBOX -----
-        if (c instanceof JComboBox combo) {
-            combo.setBackground(rojoBase);
-            combo.setForeground(texto);
-            combo.setBorder(BorderFactory.createLineBorder(rojoOscuro, 2));
-            combo.setFocusable(false);
-            combo.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
-            combo.addMouseListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    combo.setBackground(rojoClaro);
-                }
-                @Override
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    combo.setBackground(rojoBase);
-                }
-            });
-        }
-
-        // ----- LABELS -----
-        if (c instanceof JLabel lbl) {
-            lbl.setForeground(rojoOscuro);
-            lbl.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        }
-
-        // ----- TEXTFIELDS -----
-        if (c instanceof JTextField txt) {
-            txt.setBorder(BorderFactory.createCompoundBorder(
-                    BorderFactory.createLineBorder(rojoOscuro, 2),
-                    BorderFactory.createEmptyBorder(5, 10, 5, 10)
-            ));
-            txt.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        }
-
-        // Si hay paneles dentro, los estiliza recursivamente
-        if (c instanceof JPanel panelHijo) {
-            estilizarPanel(panelHijo);
-        }
-    }
-    
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAgruparActor;
     private javax.swing.JButton bAsignar;
-    private javax.swing.JComboBox<String> cbActor;
+    private javax.swing.JButton bEliminar;
+    private javax.swing.JButton bFiltrar;
+    private javax.swing.JButton bGraficar;
+    private javax.swing.JButton bModificar;
+    private javax.swing.JButton bPDF;
+    private javax.swing.JButton bTodo;
+    public javax.swing.JComboBox<String> cbActor;
+    private javax.swing.JComboBox<String> cbGenero;
     private javax.swing.JComboBox<String> cbPelicula;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lPago;
     private javax.swing.JPanel pFondo;
+    private javax.swing.JPanel pGrafica;
+    private javax.swing.JPanel pSeleccion;
+    private javax.swing.JSlider slPago;
+    private javax.swing.JTextField tBuscar;
     private javax.swing.JTable tInterpretacion;
     private javax.swing.JTextField txtPago;
+    private javax.swing.JTextField txtPersonaje;
     // End of variables declaration//GEN-END:variables
+
+    private void establecerSlider() {
+        String limiteSuperior = cnx.consultar("SELECT pago FROM filmacion ORDER BY pago DESC LIMIT 1").toString();
+        String limiteInferior = cnx.consultar("SELECT pago FROM filmacion ORDER BY pago ASC LIMIT 1").toString();
+
+        limiteSuperior = limiteSuperior.replace("[", "").replace("]", "");
+        limiteInferior = limiteInferior.replace("[", "").replace("]", "");
+
+        slPago.setMinimum(Integer.parseInt(limiteInferior));
+        slPago.setMaximum(Integer.parseInt(limiteSuperior));
+
+    }
 }

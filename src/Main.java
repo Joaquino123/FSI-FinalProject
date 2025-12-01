@@ -130,7 +130,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bActoresActionPerformed
 
     private void bFilamcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFilamcionesActionPerformed
-    FFilmacion ff=new FFilmacion();
+    FFilmacion ff=new FFilmacion(null);
     ff.setVisible(true);
     }//GEN-LAST:event_bFilamcionesActionPerformed
     public static void styleButton(JButton btn, int radius, Color color1, Color color2, Color textColor) {

@@ -14,7 +14,7 @@ public class GraficaBarras {
         this.con = con;
     }
 
-    public void crearGrafica(String consultaSQL, String titulo, String ejeX, String ejeY, JPanel panelDestino) {
+    public void crearGrafica(String consultaSQL, String titulo, String ejeX, String ejeY, JPanel panelDestino, String tabla) {
 
         try {
             ArrayList<ArrayList<String>> datos = con.consultar(consultaSQL);
@@ -25,7 +25,7 @@ public class GraficaBarras {
             for (ArrayList<String> fila : datos) {
                 String genero = fila.get(0);     // eje X
                 int cantidad = Integer.parseInt(fila.get(1)); // eje Y
-                dataset.addValue(cantidad, "Actores", genero);
+                dataset.addValue(cantidad, tabla, genero);
             }
 
             JFreeChart chart = ChartFactory.createBarChart(

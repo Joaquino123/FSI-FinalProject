@@ -511,6 +511,37 @@ public class ConexionHR {
     //-------------------------------------------------------
     //---Actualizar un registro en una tabla
     //-------------------------------------------------------
+    public int actualizar(String tabla, String[] valores) {
+        int correcta = 0;
+
+        String[] cols = columnas(tabla);
+
+        String sql = "UPDATE " + tabla + " SET ";
+        for (int k = 1; k < valores.length; k++) {
+            sql += cols[k] + " = '" + valores[k] + "'";
+            if (k < valores.length - 1) {
+                sql += ",";
+            }
+        }
+        sql += " WHERE " + cols[0] + " = " + valores[0];
+
+        System.out.println("ACTUALIZAR: " + sql);
+
+        try {
+            //            String resultado = peticionHttpPost(url, sql);
+            String resultado = peticionHttpPost(url, "sql=" + URLEncoder.encode(sql, "UTF-8"));
+
+            if (resultado.contains("AFFECTED ROWS")) {
+                correcta = 1;
+            }
+            System.out.println("Resultado: " + resultado);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return correcta;
+    }
+
     public int actualizar2(String tabla, String[] valores) {
         int correcta = 0;
         String[] cols = columnas(tabla);
@@ -543,6 +574,30 @@ public class ConexionHR {
         return correcta;
     }
 
+    //-------------------------------------------------------
+    //---Borra el registro en una tabla
+    //-------------------------------------------------------
+    public int borrar(String tabla, String[] valores) {
+        int correcta = 0;
+
+        String[] cols = columnas(tabla);
+
+        String sql = "DELETE FROM " + tabla
+                + " WHERE " + cols[0] + " = " + valores[0];
+
+        try {
+            String resultado = peticionHttpPost(url, sql);
+            if (resultado.contains("AFFECTED ROWS")) {
+                correcta = 1;
+            }
+            System.out.println("Resultado: " + resultado);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            
+        }
+        return correcta;
+    }
+    
     public int actualizarClaveCompuesta(String tabla, String[] valores) {
         int correcta = 0;
         String[] cols = columnas(tabla);
@@ -588,6 +643,7 @@ public class ConexionHR {
 
         return correcta;
     }
+    
 
     //-------------------------------------------------------
     //---Borra el registro en una tabla
@@ -610,6 +666,7 @@ public class ConexionHR {
 
         return correcta;
     }
+
     public int borrar3(String tabla, String[] valores) {
         int correcta = 0;
 

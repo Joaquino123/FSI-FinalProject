@@ -146,7 +146,15 @@ public class FActores extends javax.swing.JFrame {
         bAgrupar = new javax.swing.JButton();
         tID = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -478,7 +486,7 @@ public class FActores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -623,7 +631,8 @@ public class FActores extends javax.swing.JFrame {
     private void bInterpretacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInterpretacionActionPerformed
         String id = tID.getText();
         System.out.println(id);
-        FFilmacion ff = new FFilmacion(id);
+        int opcion=1;
+        FFilmacion ff = new FFilmacion(id,opcion);
         ff.setVisible(true);
 
     }//GEN-LAST:event_bInterpretacionActionPerformed
@@ -632,6 +641,14 @@ public class FActores extends javax.swing.JFrame {
         String sql="select * from actores group by generoa";
         cnx.entablar(sql, tConsultas);
     }//GEN-LAST:event_bAgruparActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+      
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       
+    }//GEN-LAST:event_formWindowClosing
     public static void styleTable(JTable table,
             Color headerBg,
             Color headerFg,

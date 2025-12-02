@@ -21,7 +21,7 @@ public class FFilmacion extends javax.swing.JFrame {
     // Usa esta dirección IP que ya comprobamos que llega al servidor
     ConexionHR cnx = new ConexionHR(url);
 
-    public FFilmacion(String id) {
+    public FFilmacion(String id, int opcion) {
         initComponents();
         tInterpretacion.getTableHeader().addMouseListener(new MouseAdapter() {
             @Override
@@ -43,13 +43,26 @@ public class FFilmacion extends javax.swing.JFrame {
         cbGenero.insertItemAt("Todos", 0);
         cbGenero.setSelectedItem("Todos");
 
-        if (id != null && !id.trim().isEmpty()) {
-            for (int i = 0; i < cbActor.getItemCount(); i++) {
-                String item = cbActor.getItemAt(i);
-                if (item.startsWith(id)) {   // ← Compara solo el inicio
-                    cbActor.setSelectedIndex(i);
-                    break;
+        if (opcion == 1) {
+            if (id != null && !id.trim().isEmpty()) {
+                for (int i = 0; i < cbActor.getItemCount(); i++) {
+                    String item = cbActor.getItemAt(i);
+                    if (item.startsWith(id)) {   // ← Compara solo el inicio
+                        cbActor.setSelectedIndex(i);
+                        break;
 
+                    }
+                }
+            }
+        }else if(opcion==2){
+            if (id != null && !id.trim().isEmpty()) {
+                for (int i = 0; i < cbPelicula.getItemCount(); i++) {
+                    String item = cbPelicula.getItemAt(i);
+                    if (item.startsWith(id)) {   // ← Compara solo el inicio
+                        cbPelicula.setSelectedIndex(i);
+                        break;
+
+                    }
                 }
             }
         }
@@ -64,7 +77,7 @@ public class FFilmacion extends javax.swing.JFrame {
                 new Font("Segoe UI", Font.BOLD, 13), // headerFont
                 new Font("Segoe UI", Font.PLAIN, 12) // rowFont
         );
-        
+
     }
 
     public static void styleTable(JTable table,
@@ -167,7 +180,7 @@ public class FFilmacion extends javax.swing.JFrame {
 
         jPasswordField1.setText("jPasswordField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -486,7 +499,7 @@ public class FFilmacion extends javax.swing.JFrame {
         String name = cnx.consultar(qNombre).toString();
         name = name.replace("[", "").replace("]", "");
         cnx.crearPDF("Funciones de " + name, "",
-                query, new float[]{1f, 1f, 1f, 1f,1f,1f}, "promedio_mensual");
+                query, new float[]{1f, 1f, 1f, 1f, 1f, 1f}, "promedio_mensual");
         cnx.visualizarPDF("promedio_mensual");
     }//GEN-LAST:event_bPDFActionPerformed
 
@@ -512,8 +525,8 @@ public class FFilmacion extends javax.swing.JFrame {
     }//GEN-LAST:event_slPagoStateChanged
 
     private void tBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tBuscarKeyReleased
-        String contenido=tBuscar.getText();
-        String sql="select * from proyectosActPel where idActor = '"+contenido+"' ";
+        String contenido = tBuscar.getText();
+        String sql = "select * from proyectosActPel where idActor = '" + contenido + "' ";
         cnx.entablar(sql, tInterpretacion);
     }//GEN-LAST:event_tBuscarKeyReleased
 
@@ -547,7 +560,7 @@ public class FFilmacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FFilmacion(null).setVisible(true);
+                new FFilmacion(null, 0).setVisible(true);
             }
         });
     }

@@ -638,7 +638,7 @@ public class FActores extends javax.swing.JFrame {
     }//GEN-LAST:event_bInterpretacionActionPerformed
 
     private void bAgruparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgruparActionPerformed
-        String sql="select * from actores group by generoa";
+        String sql="select count(*) as Total, generoa as Genero from actores group by generoa";
         cnx.entablar(sql, tConsultas);
     }//GEN-LAST:event_bAgruparActionPerformed
 

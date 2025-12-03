@@ -799,7 +799,7 @@ public class FPeliculas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTodosMouseClicked
 
     private void BtnAgruparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgruparMouseClicked
-        String sql="select * from peliculas group by generop";
+        String sql="select generop, count(*) AS 'Cantidad de peliculas' from peliculas group by generop";
         cnx.entablar(sql, TConsultas);
     }//GEN-LAST:event_BtnAgruparMouseClicked
 

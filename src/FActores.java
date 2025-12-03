@@ -156,16 +156,20 @@ public class FActores extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 254));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Actores");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 18, -1, 86));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 530, 50));
 
-        prosita.setBackground(new java.awt.Color(255, 204, 204));
+        prosita.setBackground(new java.awt.Color(204, 204, 204));
 
+        bAgregar.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bAgregar.setxColorHover(new java.awt.Color(0, 102, 204));
+        bAgregar.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bAgregar.setxColorPresionado(new java.awt.Color(0, 153, 255));
         bAgregar.setxSombra(false);
         bAgregar.setxTamañoSombra(0);
         bAgregar.setxTexto("Add");
@@ -186,8 +190,11 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        bActualizar.setxColorNormal(new java.awt.Color(102, 204, 255));
-        bActualizar.setxColorTexto(new java.awt.Color(0, 102, 255));
+        bActualizar.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bActualizar.setxColorHover(new java.awt.Color(0, 102, 204));
+        bActualizar.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bActualizar.setxColorPresionado(new java.awt.Color(0, 153, 255));
+        bActualizar.setxColorSombra(new java.awt.Color(0, 153, 255));
         bActualizar.setxSombra(false);
         bActualizar.setxTamañoSombra(0);
         bActualizar.setxTexto("Update");
@@ -208,7 +215,10 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        bBorrar.setxColorNormal(new java.awt.Color(153, 153, 153));
+        bBorrar.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bBorrar.setxColorHover(new java.awt.Color(0, 102, 204));
+        bBorrar.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bBorrar.setxColorPresionado(new java.awt.Color(0, 153, 255));
         bBorrar.setxSombra(false);
         bBorrar.setxTamañoSombra(0);
         bBorrar.setxTexto("Delete");
@@ -229,8 +239,10 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        bNuevo.setxColorNormal(new java.awt.Color(255, 255, 255));
-        bNuevo.setxColorTexto(new java.awt.Color(0, 0, 0));
+        bNuevo.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bNuevo.setxColorHover(new java.awt.Color(0, 102, 204));
+        bNuevo.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bNuevo.setxColorPresionado(new java.awt.Color(0, 153, 255));
         bNuevo.setxSombra(false);
         bNuevo.setxTamañoSombra(0);
         bNuevo.setxTexto("New");
@@ -251,8 +263,11 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        bPDF.setxColorNormal(new java.awt.Color(255, 255, 255));
-        bPDF.setxColorTexto(new java.awt.Color(0, 0, 0));
+        bPDF.setForeground(new java.awt.Color(255, 255, 255));
+        bPDF.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bPDF.setxColorHover(new java.awt.Color(0, 102, 204));
+        bPDF.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bPDF.setxColorPresionado(new java.awt.Color(0, 153, 255));
         bPDF.setxSombra(false);
         bPDF.setxTamañoSombra(0);
         bPDF.setxTexto("PDF");
@@ -273,8 +288,10 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        bGrafica.setxColorNormal(new java.awt.Color(255, 255, 255));
-        bGrafica.setxColorTexto(new java.awt.Color(0, 0, 0));
+        bGrafica.setxColorBorde(new java.awt.Color(0, 153, 255));
+        bGrafica.setxColorHover(new java.awt.Color(0, 153, 255));
+        bGrafica.setxColorNormal(new java.awt.Color(0, 153, 255));
+        bGrafica.setxColorPresionado(new java.awt.Color(0, 153, 255));
         bGrafica.setxSombra(false);
         bGrafica.setxTamañoSombra(0);
         bGrafica.setxTexto("Grafic");
@@ -295,6 +312,9 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
+        bInterpretacion.setBackground(new java.awt.Color(0, 153, 255));
+        bInterpretacion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bInterpretacion.setForeground(new java.awt.Color(255, 255, 255));
         bInterpretacion.setText("Interpretaciones");
         bInterpretacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,7 +358,7 @@ public class FActores extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel1.add(prosita, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 980, -1));
+        jPanel1.add(prosita, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 980, -1));
 
         tConsultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -358,33 +378,33 @@ public class FActores extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tConsultas);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 471, 608, 220));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 680, 220));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 267, 104, 43));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 104, 43));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("ID:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 214, 104, 43));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 104, 43));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Genero:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 322, 104, 43));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 104, 43));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Nacionalidad:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 372, 104, 43));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 104, 43));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Fehca nacimiento:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 428, 104, 43));
-        jPanel1.add(tNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 266, 194, 43));
-        jPanel1.add(tNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 371, 194, 43));
-        jPanel1.add(tFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 427, 194, 43));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 104, 43));
+        jPanel1.add(tNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 194, 43));
+        jPanel1.add(tNacionalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, 194, 43));
+        jPanel1.add(tFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 194, 43));
 
         cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "masculino", "femenino" }));
-        jPanel1.add(cbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 332, 194, -1));
+        jPanel1.add(cbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, 194, -1));
 
         javax.swing.GroupLayout pmulLayout = new javax.swing.GroupLayout(pmul);
         pmul.setLayout(pmulLayout);
@@ -397,7 +417,7 @@ public class FActores extends javax.swing.JFrame {
             .addGap(0, 251, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pmul, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 214, 660, -1));
+        jPanel1.add(pmul, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 660, -1));
 
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -439,26 +459,27 @@ public class FActores extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bTodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bBuscarFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cbDecada, javax.swing.GroupLayout.Alignment.LEADING, 0, 100, Short.MAX_VALUE)
-                            .addComponent(cbSexo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
-                    .addComponent(bAgrupar, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bAgrupar, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cbDecada, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbSexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bBuscarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(bTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -468,29 +489,29 @@ public class FActores extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbDecada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(bBuscarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bAgrupar)
-                .addContainerGap())
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 471, 240, -1));
-        jPanel1.add(tID, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 224, 194, 36));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 250, -1));
+        jPanel1.add(tID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 194, 36));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
         );
 
         pack();

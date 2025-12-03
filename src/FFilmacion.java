@@ -67,12 +67,12 @@ public class FFilmacion extends javax.swing.JFrame {
             }
         }
         cnx.styleTable(tInterpretacion,
-                new Color(150, 150, 150), // headerBg (gris mediano)
-                Color.white, // headerFg (blanco)
-                new Color(255, 240, 245), // rowBg (rosa claro)
-                new Color(255, 228, 235), // rowAltBg (rosa un poco más fuerte)
-                Color.black, // rowFg (texto negro)
-                new Color(255, 180, 200), // selectionBg (rosa más intenso para selección)
+                new Color(90, 120, 255), // headerBg
+                Color.black, // headerFg
+                new Color(250, 250, 255), // rowBg
+                new Color(235, 240, 255), // rowAltBg
+                new Color(50, 50, 70), // rowFg
+                new Color(120, 140, 255), // selectionBg
                 30, // rowHeight
                 new Font("Segoe UI", Font.BOLD, 13), // headerFont
                 new Font("Segoe UI", Font.PLAIN, 12) // rowFont
@@ -182,6 +182,7 @@ public class FFilmacion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        pFondo.setBackground(new java.awt.Color(255, 254, 255));
         pFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tInterpretacion.setModel(new javax.swing.table.DefaultTableModel(
@@ -202,41 +203,47 @@ public class FFilmacion extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tInterpretacion);
 
-        pFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 526, 410));
+        pFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 310, 560, 390));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Filmación");
         pFondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 230, -1));
 
+        bPDF.setBackground(new java.awt.Color(0, 153, 255));
+        bPDF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bPDF.setForeground(new java.awt.Color(255, 255, 255));
         bPDF.setText("PDF");
         bPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bPDFActionPerformed(evt);
             }
         });
-        pFondo.add(bPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 40, 119, 40));
+        pFondo.add(bPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, 119, 40));
 
+        bModificar.setBackground(new java.awt.Color(0, 153, 255));
+        bModificar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bModificar.setForeground(new java.awt.Color(255, 255, 255));
         bModificar.setText("Modificar");
         bModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bModificarActionPerformed(evt);
             }
         });
-        pFondo.add(bModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 119, 40));
+        pFondo.add(bModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 119, 40));
 
-        pSeleccion.setBackground(new java.awt.Color(204, 204, 255));
+        pSeleccion.setBackground(new java.awt.Color(255, 254, 255));
         pSeleccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbActor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pSeleccion.add(cbActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 250, 30));
+        pSeleccion.add(cbActor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 220, 30));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Actor");
         pSeleccion.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 60, 29));
 
         cbPelicula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pSeleccion.add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 252, 30));
+        pSeleccion.add(cbPelicula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 220, 30));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Film");
@@ -273,7 +280,7 @@ public class FFilmacion extends javax.swing.JFrame {
         lPago.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lPago.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lPago.setText("Pago:");
-        jPanel2.add(lPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 74, 120, 30));
+        jPanel2.add(lPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 74, 60, 30));
 
         slPago.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -282,8 +289,11 @@ public class FFilmacion extends javax.swing.JFrame {
         });
         jPanel2.add(slPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 218, -1));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(254, 255, 255));
 
+        bAgruparActor.setBackground(new java.awt.Color(0, 153, 255));
+        bAgruparActor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bAgruparActor.setForeground(new java.awt.Color(255, 255, 255));
         bAgruparActor.setText("Agrupar por actor");
         bAgruparActor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -310,7 +320,7 @@ public class FFilmacion extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 148, 330, -1));
 
-        pSeleccion.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 340, 210));
+        pSeleccion.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 340, 210));
         pSeleccion.add(txtPersonaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 220, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -324,15 +334,18 @@ public class FFilmacion extends javax.swing.JFrame {
         jLabel2.setText("Pago");
         pSeleccion.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 80, 20));
 
-        pFondo.add(pSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 360, 410));
+        pFondo.add(pSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 360, 410));
 
+        bEliminar.setBackground(new java.awt.Color(0, 153, 255));
+        bEliminar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bEliminar.setForeground(new java.awt.Color(255, 255, 255));
         bEliminar.setText("Eliminar");
         bEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bEliminarActionPerformed(evt);
             }
         });
-        pFondo.add(bEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 119, 40));
+        pFondo.add(bEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 119, 40));
 
         pGrafica.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -340,52 +353,61 @@ public class FFilmacion extends javax.swing.JFrame {
         pGrafica.setLayout(pGraficaLayout);
         pGraficaLayout.setHorizontalGroup(
             pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 890, Short.MAX_VALUE)
+            .addGap(0, 940, Short.MAX_VALUE)
         );
         pGraficaLayout.setVerticalGroup(
             pGraficaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 210, Short.MAX_VALUE)
         );
 
-        pFondo.add(pGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 890, 210));
+        pFondo.add(pGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 940, 210));
 
+        bTodo.setBackground(new java.awt.Color(0, 153, 255));
+        bTodo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bTodo.setForeground(new java.awt.Color(255, 255, 255));
         bTodo.setText("Todo");
         bTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bTodoActionPerformed(evt);
             }
         });
-        pFondo.add(bTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 119, 40));
+        pFondo.add(bTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 119, 40));
 
+        bGraficar.setBackground(new java.awt.Color(0, 153, 255));
+        bGraficar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bGraficar.setForeground(new java.awt.Color(255, 255, 255));
         bGraficar.setText("Graficar");
         bGraficar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGraficarActionPerformed(evt);
             }
         });
-        pFondo.add(bGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 119, 40));
+        pFondo.add(bGraficar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 119, 40));
 
+        bAsignar.setBackground(new java.awt.Color(0, 153, 255));
+        bAsignar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bAsignar.setForeground(new java.awt.Color(255, 255, 255));
         bAsignar.setText("Contratar");
         bAsignar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAsignarActionPerformed(evt);
             }
         });
-        pFondo.add(bAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 119, 40));
+        pFondo.add(bAsignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 119, 40));
 
         tBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tBuscarKeyReleased(evt);
             }
         });
-        pFondo.add(tBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 90, 40));
+        pFondo.add(tBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 40, 170, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 993, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
